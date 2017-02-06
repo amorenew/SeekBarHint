@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:background="@drawable/bg_seekbar_hint_popup">
+    android:background="#FFF">
 
     <TextView
         android:id="@android:id/text1"
@@ -11,10 +11,11 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:ellipsize="end"
+        android:fontFamily="sans-serif-light"
         android:gravity="center"
-        android:padding="8dp"
-        android:singleLine="true"
-        android:textColor="@android:color/white"
+        android:maxLines="1"
+        android:padding="12dp"
+        android:textColor="#379997"
         android:textSize="16sp"
         tools:text="Progress: 1000" />
 </FrameLayout>

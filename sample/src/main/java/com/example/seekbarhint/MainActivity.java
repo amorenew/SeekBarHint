@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         mSeekBarH = (SeekBarHint) findViewById(R.id.seekbar_horizontal);
-        mSeekBarV = (SeekBarHint) findViewById(R.id.seekbar_vertical);
+//        mSeekBarV = (SeekBarHint) findViewById(R.id.seekbar_vertical);
 
         mSeekBarH.setHintAdapter(new SeekBarHint.SeekBarHintAdapter() {
             @Override
@@ -27,12 +27,12 @@ public class MainActivity extends AppCompatActivity {
                 return "Horizontal: " + progress;
             }
         });
-        mSeekBarV.setHintAdapter(new SeekBarHint.SeekBarHintAdapter() {
-            @Override
-            public String getHint(SeekBarHint seekBarHint, int progress) {
-                return "Vertical: " + progress;
-            }
-        });
+//        mSeekBarV.setHintAdapter(new SeekBarHint.SeekBarHintAdapter() {
+//            @Override
+//            public String getHint(SeekBarHint seekBarHint, int progress) {
+//                return "Vertical: " + progress;
+//            }
+//        });
     }
 
     @Override
