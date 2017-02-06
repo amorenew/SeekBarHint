@@ -1,15 +1,13 @@
 package it.moondroid.seekbarhint;
 
-import android.app.Activity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import it.moondroid.seekbarhint.library.SeekBarHint;
 
-public class MainActivity extends Activity implements SeekBarHint.OnSeekBarHintProgressChangeListener {
+public class MainActivity extends AppCompatActivity implements SeekBarHint.OnSeekBarHintProgressChangeListener {
 
     private SeekBarHint mSeekBar;
 
@@ -36,7 +34,6 @@ public class MainActivity extends Activity implements SeekBarHint.OnSeekBarHintP
             case R.id.action_fixed:
                 mSeekBar.setPopupStyle(SeekBarHint.POPUP_FIXED);
                 return true;
-
             case R.id.action_follow:
                 mSeekBar.setPopupStyle(SeekBarHint.POPUP_FOLLOW);
                 return true;
@@ -47,7 +44,7 @@ public class MainActivity extends Activity implements SeekBarHint.OnSeekBarHintP
 
     @Override
     public String onHintTextChanged(SeekBarHint seekBarHint, int progress) {
-        //return "p: "+progress;
-        return null;
+        return "p: " + progress;
+//        return null;
     }
 }
