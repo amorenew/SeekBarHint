@@ -1,5 +1,4 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:hint="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingBottom="@dimen/activity_vertical_margin"
@@ -13,16 +12,10 @@
         android:orientation="vertical">
     <it.moondroid.seekbarhint.library.SeekBarHint
         android:id="@+id/seekbar_horizontal"
+        style="@style/Widget.SeekBarHint"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:max="1000"
-        android:rotation="0"
-        hint:popupAlwaysShown="true"
-        hint:popupLayout="@layout/seekbar_hint_popup"
-        hint:popupOffset="4dp"
-        hint:progressColor="#ff6a00"
-        hint:thumbColor="#ec0062" />
+        android:layout_gravity="center" />
 
 
     </LinearLayout>

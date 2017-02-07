@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
         mSeekBarH.setHintAdapter(new SeekBarHint.SeekBarHintAdapter() {
             @Override
             public String getHint(SeekBarHint seekBarHint, int progress) {
-                return "Horizontal: " + progress;
+                return "D: " + progress;
             }
         });
 //        mSeekBarV.setHintAdapter(new SeekBarHint.SeekBarHintAdapter() {
