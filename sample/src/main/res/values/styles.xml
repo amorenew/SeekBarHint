@@ -14,7 +14,7 @@
         <item name="popupAnimationStyle">@style/SeekBarHintPopupAnimation</item>
         <item name="popupOffset">0dp</item>
         <item name="popupAlwaysShown">true</item>
-        <item name="popupWidth">55dp</item>
+        <item name="popupWidth">70dp</item>
         <item name="@android:rotation">0</item>
         <item name="@android:mirrorForRtl">false</item>
         <item name="thumbColor">#b73b94</item>
