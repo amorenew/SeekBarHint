@@ -12,5 +12,7 @@
         </attr>
         <attr name="popupAnimationStyle" format="reference"/>
         <attr name="popupAlwaysShown" format="boolean"/>
+        <attr name="thumbColor" format="string" />
+        <attr name="progressColor" format="string" />
     </declare-styleable>
 </resources>

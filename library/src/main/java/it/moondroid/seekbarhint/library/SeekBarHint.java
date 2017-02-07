@@ -3,10 +3,13 @@ package it.moondroid.seekbarhint.library;
 
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.graphics.Color;
 import android.graphics.Point;
+import android.graphics.PorterDuff;
 import android.support.annotation.IntDef;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
+import android.support.v7.widget.AppCompatSeekBar;
 import android.util.AttributeSet;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -19,30 +22,23 @@ import android.widget.TextView;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
-public class SeekBarHint extends SeekBar implements SeekBar.OnSeekBarChangeListener {
+public class SeekBarHint extends AppCompatSeekBar implements SeekBar.OnSeekBarChangeListener {
 
+    public static final int POPUP_FIXED = 1;
+    public static final int POPUP_FOLLOW = 0;
     private PopupWindow mPopup;
     private View mPopupView;
     private TextView mPopupTextView;
-
     private int mPopupLayout;
     private int mPopupWidth;
     private int mPopupOffset;
     private boolean mPopupAlwaysShown;
     private int mPopupStyle;
     private int mPopupAnimStyle;
-
-    public static final int POPUP_FIXED = 1;
-    public static final int POPUP_FOLLOW = 0;
-
-    @Retention(RetentionPolicy.SOURCE)
-    @IntDef({POPUP_FIXED, POPUP_FOLLOW})
-    public @interface PopupStyle {
-    }
-
+    private String mThumbColor;
+    private String mProgressColor;
     private OnSeekBarChangeListener mInternalListener;
     private OnSeekBarChangeListener mExternalListener;
-
     private SeekBarHintAdapter mHintAdapter;
 
     public SeekBarHint(Context context) {
@@ -67,6 +63,8 @@ public class SeekBarHint extends SeekBar implements SeekBar.OnSeekBarChangeListe
         mPopupStyle = a.getInt(R.styleable.SeekBarHint_popupStyle, POPUP_FOLLOW);
         mPopupAnimStyle = a.getResourceId(R.styleable.SeekBarHint_popupAnimationStyle, R.style.SeekBarHintPopupAnimation);
         mPopupAlwaysShown = a.getBoolean(R.styleable.SeekBarHint_popupAlwaysShown, false);
+        mThumbColor = a.getString(R.styleable.SeekBarHint_thumbColor);
+        mProgressColor = a.getString(R.styleable.SeekBarHint_progressColor);
         a.recycle();
 
         setOnSeekBarChangeListener(this);
@@ -89,7 +87,12 @@ public class SeekBarHint extends SeekBar implements SeekBar.OnSeekBarChangeListe
 
         mPopup = new PopupWindow(mPopupView, mPopupWidth, ViewGroup.LayoutParams.WRAP_CONTENT, false);
         mPopup.setAnimationStyle(mPopupAnimStyle);
-
+        if (mThumbColor != null && !mThumbColor.isEmpty()) {
+            getThumb().setColorFilter(Color.parseColor(mThumbColor), PorterDuff.Mode.SRC_IN);
+        }
+        if (mProgressColor != null && !mProgressColor.isEmpty()) {
+            getProgressDrawable().setColorFilter(Color.parseColor(mProgressColor), PorterDuff.Mode.SRC_IN);
+        }
         if (mPopupAlwaysShown) showPopupOnPost();
     }
 
@@ -122,14 +125,14 @@ public class SeekBarHint extends SeekBar implements SeekBar.OnSeekBarChangeListe
         }
     }
 
-    ///////////////////////////////////////////////////////////////////////////
-    // Public api
-    ///////////////////////////////////////////////////////////////////////////
-
     @LayoutRes
     public int getPopupLayout() {
         return mPopupLayout;
     }
+
+    ///////////////////////////////////////////////////////////////////////////
+    // Public api
+    ///////////////////////////////////////////////////////////////////////////
 
     public void setPopupLayout(@LayoutRes int layout) {
         this.mPopupLayout = layout;
@@ -173,10 +176,6 @@ public class SeekBarHint extends SeekBar implements SeekBar.OnSeekBarChangeListe
         }
     }
 
-    ///////////////////////////////////////////////////////////////////////////
-    // Progress tracking
-    ///////////////////////////////////////////////////////////////////////////
-
     @Override
     public void onStartTrackingTouch(SeekBar seekBar) {
         if (mExternalListener != null) {
@@ -184,6 +183,10 @@ public class SeekBarHint extends SeekBar implements SeekBar.OnSeekBarChangeListe
         }
         showPopup();
     }
+
+    ///////////////////////////////////////////////////////////////////////////
+    // Progress tracking
+    ///////////////////////////////////////////////////////////////////////////
 
     @Override
     public void onStopTrackingTouch(SeekBar seekBar) {
@@ -212,10 +215,6 @@ public class SeekBarHint extends SeekBar implements SeekBar.OnSeekBarChangeListe
         }
     }
 
-    ///////////////////////////////////////////////////////////////////////////
-    // Offset computation
-    ///////////////////////////////////////////////////////////////////////////
-
     @NonNull
     private Point getFixedOffset() {
         Point point;
@@ -234,6 +233,10 @@ public class SeekBarHint extends SeekBar implements SeekBar.OnSeekBarChangeListe
         }
         return point;
     }
+
+    ///////////////////////////////////////////////////////////////////////////
+    // Offset computation
+    ///////////////////////////////////////////////////////////////////////////
 
     @NonNull
     private Point getFollowOffset() {
@@ -270,6 +273,11 @@ public class SeekBarHint extends SeekBar implements SeekBar.OnSeekBarChangeListe
 
     private int getFollowPosition() {
         return (int) (getProgress() * (getWidth() - getPaddingLeft() - getPaddingRight()) / (float) getMax());
+    }
+
+    @Retention(RetentionPolicy.SOURCE)
+    @IntDef({POPUP_FIXED, POPUP_FOLLOW})
+    public @interface PopupStyle {
     }
 
     ///////////////////////////////////////////////////////////////////////////

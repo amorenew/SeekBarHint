@@ -20,7 +20,9 @@
         android:rotation="0"
         hint:popupAlwaysShown="true"
         hint:popupLayout="@layout/seekbar_hint_popup"
-        hint:popupOffset="4dp" />
+        hint:popupOffset="4dp"
+        hint:progressColor="#ff6a00"
+        hint:thumbColor="#ec0062" />
 
 
     </LinearLayout>
