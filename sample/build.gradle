@@ -4,7 +4,7 @@ android {
     compileSdkVersion 25
     buildToolsVersion '25.0.2'
     defaultConfig {
-        minSdkVersion 16
+        minSdkVersion 17
         targetSdkVersion 25
 
         applicationId 'com.example.seekbarhint'
@@ -23,5 +23,5 @@ android {
 
 dependencies {
     compile project(':library')
-    compile 'com.android.support:appcompat-v7:25.1.1'
+    compile 'com.android.support:appcompat-v7:25.2.0'
 }

@@ -72,6 +72,20 @@ public class SeekBarHint extends AppCompatSeekBar implements SeekBar.OnSeekBarCh
         initHintPopup();
     }
 
+//    @Override
+//    protected void onSizeChanged(int w, int h, int oldw, int oldh) {
+//        super.onSizeChanged(w, h, oldw, oldh);
+//        hidePopup();
+//        showPopupOnPost();
+//    }
+//
+//    @Override
+//    protected synchronized void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+//        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+//        hidePopup();
+//        showPopupOnPost();
+//    }
+
     private void initHintPopup() {
         String popupText = null;
         if (mHintAdapter != null) {
@@ -272,7 +286,7 @@ public class SeekBarHint extends AppCompatSeekBar implements SeekBar.OnSeekBarCh
     }
 
     private int getFollowPosition() {
-        return (int) (getProgress() * (getWidth() - getPaddingLeft() - getPaddingRight()) / (float) getMax());
+        return (int) (getProgress() * (getWidth() - getPaddingStart() - getPaddingEnd()) / (float) getMax());
     }
 
     @Retention(RetentionPolicy.SOURCE)
