@@ -25,4 +25,10 @@
         <item name="@android:windowEnterAnimation">@anim/seekbar_hint_popup_show</item>
         <item name="@android:windowExitAnimation">@anim/seekbar_hint_popup_hide</item>
     </style>
+
+    <style name="SeekBarLabel">
+        <item name="seekMin">1</item>
+        <item name="seekMax">17</item>
+    </style>
+
 </resources>

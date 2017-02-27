@@ -2,10 +2,10 @@ package it.moondroid.seekbarhint.library;
 
 import android.annotation.TargetApi;
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.os.Build;
 import android.support.v7.widget.CardView;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -17,12 +17,14 @@ import android.widget.TextView;
  */
 
 public class SeekBarLabel extends RelativeLayout {
-    private RelativeLayout seekLayout;
+    //    private RelativeLayout seekLayout;
     private View seekBar;
     private TextView tvSeekLabel;
     private CardView seekCard;
     private float dX, dY;
     private int step, value = 0, min = 1, max = 17;
+    private OnProgressListener onProgressListener;
+    private int seekLayoutResId;
 
     public SeekBarLabel(Context context) {
         this(context, null);
@@ -34,24 +36,30 @@ public class SeekBarLabel extends RelativeLayout {
 
     public SeekBarLabel(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        init(context, attrs);
+        init(context, attrs, defStyleAttr);
     }
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     public SeekBarLabel(Context context, AttributeSet attrs, int defStyleAttr,
                         int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
-        init(context, attrs);
+        init(context, attrs, defStyleAttr);
     }
 
-    private void init(final Context context, AttributeSet attrs) {
+    private void init(final Context context, AttributeSet attrs, int defStyleAttr) {
         if (isInEditMode()) {
             return;
         }
+        TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.SeekBarLabel, defStyleAttr, 0);
+
+        seekLayoutResId = a.getResourceId(R.styleable.SeekBarLabel_seekLayout, R.layout.view_seekbar_label);
+        min = a.getInteger(R.styleable.SeekBarLabel_seekMin, 0);
+        max = a.getInt(R.styleable.SeekBarLabel_seekMax, 100);
+
 
         LayoutInflater layoutInflater =
                 (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        RelativeLayout seekLayout = (RelativeLayout) layoutInflater.inflate(R.layout.view_seekbar_label, this);
+        RelativeLayout seekLayout = (RelativeLayout) layoutInflater.inflate(seekLayoutResId, this);
         seekBar = seekLayout.findViewById(R.id.viewSeekBar);
         seekCard = (CardView) seekLayout.findViewById(R.id.seekCard);
         tvSeekLabel = (TextView) seekLayout.findViewById(R.id.tvSeek);
@@ -64,16 +72,12 @@ public class SeekBarLabel extends RelativeLayout {
                     case MotionEvent.ACTION_DOWN:
                         dX = view.getX() - event.getRawX();
                         updateProgress(view, event);
-                        break;
                     case MotionEvent.ACTION_MOVE:
                         updateProgress(view, event);
-                        Log.d("seekbar", String.valueOf(((seekCard.getX() + seekCard.getWidth() / 2) / seekBar.getWidth()) * 100) + "%");
-//                        Log.d("seekbar", String.valueOf(((seekCard.getX()+seekCard.getWidth()/2)/seekBar.getWidth())*100)+"%");
-//                        Log.d("seekbar", String.valueOf((seekCard.getX()+seekCard.getWidth()/2)/seekBar.getWidth()));
+                    case MotionEvent.ACTION_UP:
+                        updateProgress(view, event);
                         break;
 
-                    default:
-                        return false;
                 }
                 return true;
             }
@@ -106,7 +110,7 @@ public class SeekBarLabel extends RelativeLayout {
         if (value > max)
             value = max;
 
-        String timeText = String.valueOf(value);
+//        String timeText = String.valueOf(value);
 //        if (value > 9) {
 //            if (value % 2 == 0)
 //                timeText = "" + (value / 2) + ":00";
@@ -118,8 +122,20 @@ public class SeekBarLabel extends RelativeLayout {
 //            else
 //                timeText = "" + (value / 2) + ":30";
 //        }
-
-        tvSeekLabel.setText(timeText);
+        if (onProgressListener != null)
+            onProgressListener.onProgress(value);
+        tvSeekLabel.setText(String.valueOf(value));
     }
 
+    public OnProgressListener getOnProgressListener() {
+        return onProgressListener;
+    }
+
+    public void setOnProgressListener(OnProgressListener onProgressListener) {
+        this.onProgressListener = onProgressListener;
+    }
+
+    public interface OnProgressListener {
+        void onProgress(int value);
+    }
 }
