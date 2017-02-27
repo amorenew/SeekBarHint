@@ -77,7 +77,6 @@ public class SeekBarLabel extends RelativeLayout {
                     case MotionEvent.ACTION_UP:
                         updateProgress(view, event);
                         break;
-
                 }
                 return true;
             }
@@ -110,21 +109,46 @@ public class SeekBarLabel extends RelativeLayout {
         if (value > max)
             value = max;
 
-//        String timeText = String.valueOf(value);
-//        if (value > 9) {
-//            if (value % 2 == 0)
-//                timeText = "" + (value / 2) + ":00";
-//            else
-//                timeText = "" + (value / 2) + ":30";
-//        } else {
-//            if (value % 2 == 0)
-//                timeText = "" + (value / 2) + ":00";
-//            else
-//                timeText = "" + (value / 2) + ":30";
-//        }
         if (onProgressListener != null)
             onProgressListener.onProgress(value);
         tvSeekLabel.setText(String.valueOf(value));
+    }
+
+    @Override
+    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+        if (value > 0) {
+            setProgress(value);
+        }
+    }
+
+    public void setProgress(int value) {
+        if (value < min)
+            value = min;
+        if (value > max)
+            value = max;
+
+        if (onProgressListener != null)
+            onProgressListener.onProgress(value);
+        tvSeekLabel.setText(String.valueOf(value));
+        if (step == 0)
+            step = seekBar.getWidth() / max;
+        int rawX = (value * step) - (max * step) + seekBar.getWidth();
+        if (seekCard.getX() >= seekBar.getX())
+            seekCard.animate()
+                    .x(rawX)
+                    .setDuration(0)
+                    .start();
+        if (seekCard.getX() < seekBar.getX())
+            seekCard.animate()
+                    .x(0)
+                    .setDuration(0)
+                    .start();
+        if (seekCard.getX() + seekCard.getWidth() > seekBar.getX() + seekBar.getWidth())
+            seekCard.animate()
+                    .x(seekBar.getX() + seekBar.getWidth() - seekCard.getWidth())
+                    .setDuration(0)
+                    .start();
     }
 
     public OnProgressListener getOnProgressListener() {

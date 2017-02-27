@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.LinearLayout;
 
 import it.moondroid.seekbarhint.library.SeekBarHint;
+import it.moondroid.seekbarhint.library.SeekBarLabel;
 
 
 public class MainActivity extends AppCompatActivity implements ScrollListener {
@@ -15,14 +16,15 @@ public class MainActivity extends AppCompatActivity implements ScrollListener {
     private SeekBarHint mSeekBarH;
     //    private SeekBarHint mSeekBarV;
     private LinearLayout layout1;
-
+    private SeekBarLabel seekLabel1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         layout1 = (LinearLayout) findViewById(R.id.layout1);
-        layout1.setVisibility(View.GONE);
+        layout1.setVisibility(View.VISIBLE);
         mSeekBarH = (SeekBarHint) findViewById(R.id.seekbar_horizontal);
+        seekLabel1 = (SeekBarLabel) findViewById(R.id.seekLabel1);
 //        mSeekBarV = (SeekBarHint) findViewById(R.id.seekbar_vertical);
 
         mSeekBarH.setHintAdapter(new SeekBarHint.SeekBarHintAdapter() {
@@ -67,7 +69,7 @@ public class MainActivity extends AppCompatActivity implements ScrollListener {
             case R.id.action_fixed:
                 mSeekBarH.setPopupStyle(SeekBarHint.POPUP_FIXED);
 //                mSeekBarV.setPopupStyle(SeekBarHint.POPUP_FIXED);
-                layout1.setVisibility(View.VISIBLE);
+                seekLabel1.setProgress(8);
                 return true;
 
             case R.id.action_follow:
@@ -80,6 +82,6 @@ public class MainActivity extends AppCompatActivity implements ScrollListener {
 
     @Override
     public void enableScroll(boolean isScroll) {
-//            scrollContainer.setScrollingEnabled(isScroll);
+        // scrollContainer.setScrollingEnabled(isScroll);
     }
 }
