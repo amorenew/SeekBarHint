@@ -1,11 +1,15 @@
 package com.example.seekbarhint;
 
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
+
+import java.util.Locale;
 
 import it.moondroid.seekbarhint.library.SeekBarHint;
 import it.moondroid.seekbarhint.library.SeekBarLabel;
@@ -21,10 +25,13 @@ public class MainActivity extends AppCompatActivity implements ScrollListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
         layout1 = (LinearLayout) findViewById(R.id.layout1);
         layout1.setVisibility(View.VISIBLE);
         mSeekBarH = (SeekBarHint) findViewById(R.id.seekbar_horizontal);
         seekLabel1 = (SeekBarLabel) findViewById(R.id.seekLabel1);
+        seekLabel1.setProgress(10);
 //        mSeekBarV = (SeekBarHint) findViewById(R.id.seekbar_vertical);
 
         mSeekBarH.setHintAdapter(new SeekBarHint.SeekBarHintAdapter() {
@@ -74,6 +81,14 @@ public class MainActivity extends AppCompatActivity implements ScrollListener {
 
             case R.id.action_follow:
                 mSeekBarH.setPopupStyle(SeekBarHint.POPUP_FOLLOW);
+                Resources resources = getResources();
+                String localLanguage = resources.getConfiguration().locale.getLanguage();
+                Locale locale = new Locale("AR");
+                Locale.setDefault(locale);
+                Configuration config = new Configuration();
+                config.locale = locale;
+                resources.updateConfiguration(config, resources.getDisplayMetrics());
+                recreate();
 //                mSeekBarV.setPopupStyle(SeekBarHint.POPUP_FOLLOW);
                 return true;
         }

@@ -4,6 +4,7 @@ import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.os.Build;
+import android.support.annotation.NonNull;
 import android.support.v7.widget.CardView;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
@@ -22,7 +23,7 @@ public class SeekBarLabel extends RelativeLayout {
     private TextView tvSeekLabel;
     private CardView seekCard;
     private float dX, dY;
-    private int step, value = 0, min = 1, max = 17;
+    private int step, progress = 0, min = 1, max = 17;
     private OnProgressListener onProgressListener;
     private int seekLayoutResId;
 
@@ -63,7 +64,7 @@ public class SeekBarLabel extends RelativeLayout {
         seekBar = seekLayout.findViewById(R.id.viewSeekBar);
         seekCard = (CardView) seekLayout.findViewById(R.id.seekCard);
         tvSeekLabel = (TextView) seekLayout.findViewById(R.id.tvSeek);
-        tvSeekLabel.setText(String.valueOf(value + 1));
+        tvSeekLabel.setText(String.valueOf(progress + 1));
 
         seekCard.setOnTouchListener(new OnTouchListener() {
             @Override
@@ -117,23 +118,48 @@ public class SeekBarLabel extends RelativeLayout {
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-        if (value > 0) {
-            setProgress(value);
+        if (progress > 1) {
+            setProgress(progress);
+        }
+    }
+
+    @Override
+    protected void onLayout(boolean changed, int l, int t, int r, int b) {
+        super.onLayout(changed, l, t, r, b);
+        if (progress > 1) {
+            setProgress(progress);
+        }
+    }
+
+    @Override
+    protected void onVisibilityChanged(@NonNull View changedView, int visibility) {
+        super.onVisibilityChanged(changedView, visibility);
+        if (progress > 1) {
+            setProgress(progress);
+        }
+    }
+
+    @Override
+    protected void onSizeChanged(int w, int h, int oldw, int oldh) {
+        super.onSizeChanged(w, h, oldw, oldh);
+        if (progress > 1) {
+            setProgress(progress);
         }
     }
 
     public void setProgress(int value) {
-        if (value < min)
-            value = min;
-        if (value > max)
-            value = max;
+        this.progress = value;
+        if (progress < min)
+            progress = min;
+        if (progress > max)
+            progress = max;
 
         if (onProgressListener != null)
-            onProgressListener.onProgress(value);
-        tvSeekLabel.setText(String.valueOf(value));
+            onProgressListener.onProgress(progress);
+        tvSeekLabel.setText(String.valueOf(progress));
         if (step == 0)
             step = seekBar.getWidth() / max;
-        int rawX = (value * step) - (max * step) + seekBar.getWidth();
+        int rawX = (progress * step) - (max * step) + seekBar.getWidth();
         if (seekCard.getX() >= seekBar.getX())
             seekCard.animate()
                     .x(rawX)
@@ -160,6 +186,6 @@ public class SeekBarLabel extends RelativeLayout {
     }
 
     public interface OnProgressListener {
-        void onProgress(int value);
+        void onProgress(int progress);
     }
 }
