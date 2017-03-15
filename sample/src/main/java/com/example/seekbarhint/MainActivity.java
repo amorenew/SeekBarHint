@@ -11,6 +11,7 @@ import android.widget.LinearLayout;
 
 import java.util.Locale;
 
+import it.moondroid.seekbarhint.library.ScrollListener;
 import it.moondroid.seekbarhint.library.SeekBarHint;
 import it.moondroid.seekbarhint.library.SeekBarLabel;
 
@@ -21,17 +22,36 @@ public class MainActivity extends AppCompatActivity implements ScrollListener {
     //    private SeekBarHint mSeekBarV;
     private LinearLayout layout1;
     private SeekBarLabel seekLabel1;
+    private LockableScrollView lockableScrollView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
+        lockableScrollView = (LockableScrollView) findViewById(R.id.lockableScrollView);
         layout1 = (LinearLayout) findViewById(R.id.layout1);
         layout1.setVisibility(View.VISIBLE);
         mSeekBarH = (SeekBarHint) findViewById(R.id.seekbar_horizontal);
         seekLabel1 = (SeekBarLabel) findViewById(R.id.seekLabel1);
         seekLabel1.setProgress(10);
+        seekLabel1.setOnProgressListener(new SeekBarLabel.OnProgressListener() {
+            @Override
+            public void onProgress(int progress) {
+
+            }
+
+            @Override
+            public String getProgressText(int progress) {
+                return "[" + progress + "]";
+            }
+        });
+        seekLabel1.setScrollListener(new ScrollListener() {
+            @Override
+            public void enableScroll(boolean isScroll) {
+                lockableScrollView.setScrollingEnabled(isScroll);
+            }
+        });
 //        mSeekBarV = (SeekBarHint) findViewById(R.id.seekbar_vertical);
 
         mSeekBarH.setHintAdapter(new SeekBarHint.SeekBarHintAdapter() {

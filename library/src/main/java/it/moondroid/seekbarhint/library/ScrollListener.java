@@ -1,4 +1,4 @@
-package com.example.seekbarhint;
+package it.moondroid.seekbarhint.library;
 
 /**
  * Created by TCIG_PC_54 on 7/19/2016.

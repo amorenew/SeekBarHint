@@ -26,6 +26,7 @@ public class SeekBarLabel extends RelativeLayout {
     private int step, progress = 0, min = 1, max = 17;
     private OnProgressListener onProgressListener;
     private int seekLayoutResId;
+    private ScrollListener scrollListener;
 
     public SeekBarLabel(Context context) {
         this(context, null);
@@ -64,7 +65,12 @@ public class SeekBarLabel extends RelativeLayout {
         seekBar = seekLayout.findViewById(R.id.viewSeekBar);
         seekCard = (CardView) seekLayout.findViewById(R.id.seekCard);
         tvSeekLabel = (TextView) seekLayout.findViewById(R.id.tvSeek);
-        tvSeekLabel.setText(String.valueOf(progress + 1));
+        if (onProgressListener != null) {
+            onProgressListener.onProgress(progress);
+            tvSeekLabel.setText(onProgressListener.getProgressText(progress + 1));
+        } else {
+            tvSeekLabel.setText(String.valueOf(progress + 1));
+        }
 
         seekCard.setOnTouchListener(new OnTouchListener() {
             @Override
@@ -73,16 +79,31 @@ public class SeekBarLabel extends RelativeLayout {
                     case MotionEvent.ACTION_DOWN:
                         dX = view.getX() - event.getRawX();
                         updateProgress(view, event);
+                        if (scrollListener != null)
+                            scrollListener.enableScroll(false);
+                        break;
                     case MotionEvent.ACTION_MOVE:
                         updateProgress(view, event);
+                        if (scrollListener != null)
+                            scrollListener.enableScroll(false);
+                        break;
                     case MotionEvent.ACTION_UP:
                         updateProgress(view, event);
+                        if (scrollListener != null)
+                            scrollListener.enableScroll(true);
                         break;
                 }
                 return true;
             }
         });
+    }
 
+    public ScrollListener getScrollListener() {
+        return scrollListener;
+    }
+
+    public void setScrollListener(ScrollListener scrollListener) {
+        this.scrollListener = scrollListener;
     }
 
     private void updateProgress(View view, MotionEvent event) {
@@ -110,9 +131,12 @@ public class SeekBarLabel extends RelativeLayout {
         if (value > max)
             value = max;
 
-        if (onProgressListener != null)
+        if (onProgressListener != null) {
             onProgressListener.onProgress(value);
-        tvSeekLabel.setText(String.valueOf(value));
+            tvSeekLabel.setText(onProgressListener.getProgressText(value));
+        } else {
+            tvSeekLabel.setText(String.valueOf(value));
+        }
     }
 
     @Override
@@ -154,9 +178,12 @@ public class SeekBarLabel extends RelativeLayout {
         if (progress > max)
             progress = max;
 
-        if (onProgressListener != null)
+        if (onProgressListener != null) {
             onProgressListener.onProgress(progress);
-        tvSeekLabel.setText(String.valueOf(progress));
+            tvSeekLabel.setText(onProgressListener.getProgressText(progress));
+        } else {
+            tvSeekLabel.setText(String.valueOf(progress));
+        }
         if (step == 0)
             step = seekBar.getWidth() / max;
         int rawX = (progress * step) - (max * step) + seekBar.getWidth();
@@ -187,5 +214,7 @@ public class SeekBarLabel extends RelativeLayout {
 
     public interface OnProgressListener {
         void onProgress(int progress);
+
+        String getProgressText(int progress);
     }
 }
