@@ -1,4 +1,4 @@
-package com.example.seekbarhint;
+package amorenew.library;
 
 import android.content.Context;
 import android.os.Build;

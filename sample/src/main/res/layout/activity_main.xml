@@ -7,7 +7,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin">
 
-    <com.example.seekbarhint.LockableScrollView
+    <amorenew.library.LockableScrollView
         android:id="@+id/lockableScrollView"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -17,7 +17,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <it.moondroid.seekbarhint.library.SeekBarHint
+            <amorenew.library.SeekBarHint
                 android:id="@+id/seekbar_horizontal"
                 style="@style/Widget.SeekBarHint"
                 android:layout_width="match_parent"
@@ -279,5 +279,5 @@
 
             </LinearLayout>
         </LinearLayout>
-    </com.example.seekbarhint.LockableScrollView>
+    </amorenew.library.LockableScrollView>
 </RelativeLayout>

@@ -1,6 +1,7 @@
 <resources>
     <declare-styleable name="Theme">
         <attr name="seekBarHintStyle" format="reference" />
+        <attr name="seekBarLabelStyle" format="reference" />
     </declare-styleable>
     <declare-styleable name="SeekBarHint">
         <attr name="popupLayout" format="reference" />
@@ -12,5 +13,12 @@
         </attr>
         <attr name="popupAnimationStyle" format="reference" />
         <attr name="popupAlwaysShown" format="boolean" />
+        <attr name="thumbColor" format="string" />
+        <attr name="progressColor" format="string" />
+    </declare-styleable>
+    <declare-styleable name="SeekBarLabel">
+        <attr name="seekMin" format="integer" />
+        <attr name="seekMax" format="integer" />
+        <attr name="seekLayout" format="integer" />
     </declare-styleable>
 </resources>

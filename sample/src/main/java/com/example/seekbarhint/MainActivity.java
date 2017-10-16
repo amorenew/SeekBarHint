@@ -11,9 +11,10 @@ import android.widget.LinearLayout;
 
 import java.util.Locale;
 
+import amorenew.library.LockableScrollView;
 import amorenew.library.ScrollListener;
+import amorenew.library.SeekBarHint;
 import amorenew.library.SeekBarLabel;
-import it.moondroid.seekbarhint.library.SeekBarHint;
 
 
 public class MainActivity extends AppCompatActivity implements ScrollListener {
@@ -29,11 +30,11 @@ public class MainActivity extends AppCompatActivity implements ScrollListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        lockableScrollView = (LockableScrollView) findViewById(R.id.lockableScrollView);
-        layout1 = (LinearLayout) findViewById(R.id.layout1);
+        lockableScrollView = findViewById(R.id.lockableScrollView);
+        layout1 = findViewById(R.id.layout1);
         layout1.setVisibility(View.VISIBLE);
-        mSeekBarH = (SeekBarHint) findViewById(R.id.seekbar_horizontal);
-        seekLabel1 = (SeekBarLabel) findViewById(R.id.seekLabel1);
+        mSeekBarH = findViewById(R.id.seekbar_horizontal);
+        seekLabel1 = findViewById(R.id.seekLabel1);
         seekLabel1.setProgress(10);
         seekLabel1.setOnProgressListener(new SeekBarLabel.OnProgressListener() {
             @Override
