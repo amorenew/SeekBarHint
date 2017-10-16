@@ -7,7 +7,7 @@ import android.view.MenuItem;
 
 import it.moondroid.seekbarhint.library.SeekBarHint;
 
-public class MainActivity extends AppCompatActivity implements SeekBarHint.OnSeekBarHintProgressChangeListener {
+public class MainActivity extends AppCompatActivity {
 
     private SeekBarHint mSeekBar;
 
@@ -17,8 +17,12 @@ public class MainActivity extends AppCompatActivity implements SeekBarHint.OnSee
         setContentView(R.layout.activity_main);
 
         mSeekBar = (SeekBarHint) findViewById(R.id.seekbar);
-
-        mSeekBar.setOnProgressChangeListener(this);
+        mSeekBar.setHintAdapter(new SeekBarHint.SeekBarHintAdapter() {
+            @Override
+            public String getHint(SeekBarHint seekBarHint, int progress) {
+                return null;
+            }
+        });
     }
 
     @Override
@@ -30,7 +34,7 @@ public class MainActivity extends AppCompatActivity implements SeekBarHint.OnSee
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case R.id.action_fixed:
                 mSeekBar.setPopupStyle(SeekBarHint.POPUP_FIXED);
                 return true;
@@ -42,9 +46,9 @@ public class MainActivity extends AppCompatActivity implements SeekBarHint.OnSee
         return super.onOptionsItemSelected(item);
     }
 
-    @Override
-    public String onHintTextChanged(SeekBarHint seekBarHint, int progress) {
-        return "p: " + progress;
-//        return null;
-    }
+//    @Override
+//    public String onHintTextChanged(SeekBarHint seekBarHint, int progress) {
+//        return "p: " + progress;
+////        return null;
+//    }
 }

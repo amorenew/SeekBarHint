@@ -1,20 +1,33 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:hint="http://schemas.android.com/apk/res-auto"
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:hint="http://schemas.android.com/tools"
+    android:id="@+id/view_calendar_picker"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin">
+    android:orientation="vertical">
 
-    <it.moondroid.seekbarhint.library.SeekBarHint
-        android:id="@+id/seekbar"
+
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:max="48"
-        hint:popupStyle="follow"
-        hint:popupWidth="60dp"
-        hint:yOffset="55dp" />
+        android:gravity="center"
+        android:paddingBottom="28dp"
+        android:paddingEnd="@dimen/activity_horizontal_margin"
+        android:paddingStart="@dimen/activity_horizontal_margin"
+        android:paddingTop="28dp">
 
-</RelativeLayout>
+        <it.moondroid.seekbarhint.library.SeekBarHint
+            android:id="@+id/seekbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:max="48"
+            android:rotation="0"
+            hint:popupAlwaysShown="true"
+            hint:popupLayout="@layout/custom_seekbar_hint_popup"
+            hint:popupOffset="55dp"
+            hint:popupStyle="follow"
+            hint:popupWidth="60dp" />
+    </RelativeLayout>
+
+</LinearLayout>
