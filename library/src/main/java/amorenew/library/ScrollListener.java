@@ -1,4 +1,4 @@
-package it.moondroid.seekbarhint.library;
+package amorenew.library;
 
 /**
  * Created by TCIG_PC_54 on 7/19/2016.

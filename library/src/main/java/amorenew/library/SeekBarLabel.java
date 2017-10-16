@@ -1,4 +1,4 @@
-package it.moondroid.seekbarhint.library;
+package amorenew.library;
 
 import android.annotation.TargetApi;
 import android.content.Context;
@@ -63,8 +63,8 @@ public class SeekBarLabel extends RelativeLayout {
                 (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         RelativeLayout seekLayout = (RelativeLayout) layoutInflater.inflate(seekLayoutResId, this);
         seekBar = seekLayout.findViewById(R.id.viewSeekBar);
-        seekCard = (CardView) seekLayout.findViewById(R.id.seekCard);
-        tvSeekLabel = (TextView) seekLayout.findViewById(R.id.tvSeek);
+        seekCard = seekLayout.findViewById(R.id.seekCard);
+        tvSeekLabel = seekLayout.findViewById(R.id.tvSeek);
         if (onProgressListener != null) {
             onProgressListener.onProgress(progress);
             tvSeekLabel.setText(onProgressListener.getProgressText(progress + 1));

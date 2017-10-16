@@ -22,8 +22,8 @@
     </style>
 
     <style name="SeekBarHintPopupAnimation">
-        <item name="@android:windowEnterAnimation">@anim/seekbar_hint_popup_show</item>
-        <item name="@android:windowExitAnimation">@anim/seekbar_hint_popup_hide</item>
+        <item name="android:windowEnterAnimation">@anim/seekbar_hint_popup_show</item>
+        <item name="android:windowExitAnimation">@anim/seekbar_hint_popup_hide</item>
     </style>
 
     <style name="SeekBarLabel">

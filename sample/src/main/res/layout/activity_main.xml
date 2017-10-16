@@ -34,7 +34,7 @@
                 android:paddingBottom="5dp"
                 android:paddingTop="5dp">
 
-                <it.moondroid.seekbarhint.library.SeekBarLabel
+                <amorenew.library.SeekBarLabel
                     android:id="@+id/seekLabel1"
                     style="@style/SeekBarLabel"
                     android:layout_width="match_parent"
@@ -49,7 +49,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <it.moondroid.seekbarhint.library.SeekBarLabel
+                <amorenew.library.SeekBarLabel
                     style="@style/SeekBarLabel"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
@@ -61,7 +61,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <it.moondroid.seekbarhint.library.SeekBarLabel
+                <amorenew.library.SeekBarLabel
                     style="@style/SeekBarLabel"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
@@ -84,7 +84,7 @@
                     android:text="erwerewr"
                     android:textColor="#EEFFFFFF" />
 
-                <it.moondroid.seekbarhint.library.SeekBarLabel
+                <amorenew.library.SeekBarLabel
                     android:id="@+id/childAgePicker4"
                     android:layout_width="match_parent"
                     android:layout_height="120dp"
@@ -114,7 +114,7 @@
                     android:text="erwerewr"
                     android:textColor="#EEFFFFFF" />
 
-                <it.moondroid.seekbarhint.library.SeekBarLabel
+                <amorenew.library.SeekBarLabel
                     android:id="@+id/childAgePicker42123"
                     android:layout_width="match_parent"
                     android:layout_height="120dp"
@@ -144,7 +144,7 @@
                     android:text="erwerewr"
                     android:textColor="#EEFFFFFF" />
 
-                <it.moondroid.seekbarhint.library.SeekBarLabel
+                <amorenew.library.SeekBarLabel
                     android:id="@+id/childAgePicker4111"
                     android:layout_width="match_parent"
                     android:layout_height="120dp"
@@ -174,7 +174,7 @@
                     android:text="erwerewr"
                     android:textColor="#EEFFFFFF" />
 
-                <it.moondroid.seekbarhint.library.SeekBarLabel
+                <amorenew.library.SeekBarLabel
                     android:id="@+id/childAgePicker24"
                     android:layout_width="match_parent"
                     android:layout_height="120dp"
@@ -204,7 +204,7 @@
                     android:text="erwerewr"
                     android:textColor="#EEFFFFFF" />
 
-                <it.moondroid.seekbarhint.library.SeekBarLabel
+                <amorenew.library.SeekBarLabel
                     android:id="@+id/childAgePicker412"
                     android:layout_width="match_parent"
                     android:layout_height="120dp"
@@ -234,7 +234,7 @@
                     android:text="erwerewr"
                     android:textColor="#EEFFFFFF" />
 
-                <it.moondroid.seekbarhint.library.SeekBarLabel
+                <amorenew.library.SeekBarLabel
                     android:id="@+id/childAgePicker12"
                     android:layout_width="match_parent"
                     android:layout_height="120dp"
@@ -264,7 +264,7 @@
                     android:text="erwerewr"
                     android:textColor="#EEFFFFFF" />
 
-                <it.moondroid.seekbarhint.library.SeekBarLabel
+                <amorenew.library.SeekBarLabel
                     android:id="@+id/childAgePicker11"
                     android:layout_width="match_parent"
                     android:layout_height="120dp"

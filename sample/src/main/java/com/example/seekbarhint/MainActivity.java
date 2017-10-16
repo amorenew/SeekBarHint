@@ -11,9 +11,9 @@ import android.widget.LinearLayout;
 
 import java.util.Locale;
 
-import it.moondroid.seekbarhint.library.ScrollListener;
+import amorenew.library.ScrollListener;
+import amorenew.library.SeekBarLabel;
 import it.moondroid.seekbarhint.library.SeekBarHint;
-import it.moondroid.seekbarhint.library.SeekBarLabel;
 
 
 public class MainActivity extends AppCompatActivity implements ScrollListener {
