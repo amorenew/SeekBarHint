@@ -1,0 +1,283 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin">
+
+    <com.example.seekbarhint.LockableScrollView
+        android:id="@+id/lockableScrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <it.moondroid.seekbarhint.library.SeekBarHint
+                android:id="@+id/seekbar_horizontal"
+                style="@style/Widget.SeekBarHint"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="25dp"
+                android:layout_marginTop="25dp" />
+
+            <LinearLayout
+                android:id="@+id/layout1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#9acfb0"
+                android:paddingBottom="5dp"
+                android:paddingTop="5dp">
+
+                <it.moondroid.seekbarhint.library.SeekBarLabel
+                    android:id="@+id/seekLabel1"
+                    style="@style/SeekBarLabel"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginBottom="25dp"
+                    android:layout_marginTop="25dp"
+                    app:seekMax="15"
+                    app:seekMin="0" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <it.moondroid.seekbarhint.library.SeekBarLabel
+                    style="@style/SeekBarLabel"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginBottom="25dp"
+                    android:layout_marginTop="25dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <it.moondroid.seekbarhint.library.SeekBarLabel
+                    style="@style/SeekBarLabel"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginBottom="25dp"
+                    android:layout_marginTop="25dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout_child4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:visibility="visible">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/activity_vertical_margin"
+                    android:text="erwerewr"
+                    android:textColor="#EEFFFFFF" />
+
+                <it.moondroid.seekbarhint.library.SeekBarLabel
+                    android:id="@+id/childAgePicker4"
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    android:gravity="center"
+                    app:seekMax="17"
+                    app:seekMin="1" />
+
+                <View
+                    android:layout_width="wrap_content"
+                    android:layout_height="1dp"
+                    android:background="#AAA" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout_child47878"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:visibility="visible">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/activity_vertical_margin"
+                    android:text="erwerewr"
+                    android:textColor="#EEFFFFFF" />
+
+                <it.moondroid.seekbarhint.library.SeekBarLabel
+                    android:id="@+id/childAgePicker42123"
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    android:gravity="center"
+                    app:seekMax="17"
+                    app:seekMin="1" />
+
+                <View
+                    android:layout_width="wrap_content"
+                    android:layout_height="1dp"
+                    android:background="#AAA" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout_child214"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:visibility="visible">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/activity_vertical_margin"
+                    android:text="erwerewr"
+                    android:textColor="#EEFFFFFF" />
+
+                <it.moondroid.seekbarhint.library.SeekBarLabel
+                    android:id="@+id/childAgePicker4111"
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    android:gravity="center"
+                    app:seekMax="17"
+                    app:seekMin="1" />
+
+                <View
+                    android:layout_width="wrap_content"
+                    android:layout_height="1dp"
+                    android:background="#AAA" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout_child224"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:visibility="visible">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/activity_vertical_margin"
+                    android:text="erwerewr"
+                    android:textColor="#EEFFFFFF" />
+
+                <it.moondroid.seekbarhint.library.SeekBarLabel
+                    android:id="@+id/childAgePicker24"
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    android:gravity="center"
+                    app:seekMax="17"
+                    app:seekMin="1" />
+
+                <View
+                    android:layout_width="wrap_content"
+                    android:layout_height="1dp"
+                    android:background="#AAA" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout_child11"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:visibility="visible">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/activity_vertical_margin"
+                    android:text="erwerewr"
+                    android:textColor="#EEFFFFFF" />
+
+                <it.moondroid.seekbarhint.library.SeekBarLabel
+                    android:id="@+id/childAgePicker412"
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    android:gravity="center"
+                    app:seekMax="17"
+                    app:seekMin="1" />
+
+                <View
+                    android:layout_width="wrap_content"
+                    android:layout_height="1dp"
+                    android:background="#AAA" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout_child121"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:visibility="visible">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/activity_vertical_margin"
+                    android:text="erwerewr"
+                    android:textColor="#EEFFFFFF" />
+
+                <it.moondroid.seekbarhint.library.SeekBarLabel
+                    android:id="@+id/childAgePicker12"
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    android:gravity="center"
+                    app:seekMax="17"
+                    app:seekMin="1" />
+
+                <View
+                    android:layout_width="wrap_content"
+                    android:layout_height="1dp"
+                    android:background="#AAA" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout_child312"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:visibility="visible">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/activity_vertical_margin"
+                    android:text="erwerewr"
+                    android:textColor="#EEFFFFFF" />
+
+                <it.moondroid.seekbarhint.library.SeekBarLabel
+                    android:id="@+id/childAgePicker11"
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    android:gravity="center"
+                    app:seekMax="17"
+                    app:seekMin="1" />
+
+                <View
+                    android:layout_width="wrap_content"
+                    android:layout_height="1dp"
+                    android:background="#AAA" />
+
+            </LinearLayout>
+        </LinearLayout>
+    </com.example.seekbarhint.LockableScrollView>
+</RelativeLayout>

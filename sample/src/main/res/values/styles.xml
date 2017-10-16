@@ -1,0 +1,34 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="seekBarHintStyle">@style/Widget.SeekBarHint</item>
+    </style>
+
+    <style name="Widget.SeekBarHintBase" parent="Widget.AppCompat.SeekBar" />
+
+    <style name="Widget.SeekBarHint" parent="Widget.SeekBarHintBase">
+        <item name="popupLayout">@layout/seekbar_hint_popup</item>
+        <item name="popupStyle">follow</item>
+        <item name="popupAnimationStyle">@style/SeekBarHintPopupAnimation</item>
+        <item name="popupOffset">0dp</item>
+        <item name="popupAlwaysShown">true</item>
+        <item name="popupWidth">70dp</item>
+        <item name="@android:rotation">0</item>
+        <item name="@android:mirrorForRtl">false</item>
+        <item name="thumbColor">#b73b94</item>
+        <item name="progressColor">#9fa700</item>
+    </style>
+
+    <style name="SeekBarHintPopupAnimation">
+        <item name="@android:windowEnterAnimation">@anim/seekbar_hint_popup_show</item>
+        <item name="@android:windowExitAnimation">@anim/seekbar_hint_popup_hide</item>
+    </style>
+
+    <style name="SeekBarLabel">
+        <item name="seekMin">1</item>
+        <item name="seekMax">17</item>
+    </style>
+
+</resources>
